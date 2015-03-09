@@ -44,9 +44,7 @@ By default, Magento chucks all searchable attributes into one fulltext column on
 
 | fulltext_id | product_id | store_id |    data_index    |
 |-------------|------------|----------|------------------|
-|    940753   |   225439   |     9    | CPU | 1.23 | 3.0 |
-|             |            |          |                  |
-|             |            |          |                  |
+|    940753   |   225439   |     9    | CPU Desc etc     |
 
 And magento just does a fulltext search against the data_index column with no weighting on any attributes and also includes things like weight, price, etc.
 
@@ -56,9 +54,7 @@ Sphinx Search overrides the fulltext index and creates a new index table that lo
 
 |    product_id    |    store_id    |    name    |    name_attributes    |    category     | sku |    data_index     |
 |------------------|----------------|------------|-----------------------|-----------------|-----|-------------------|
-| 12345678         | 9              | CPU        | 3GHz CPU              | Some | Category | Foo | CPU | 1.23 | 3.0  |
-|                  |                |            |                       |                 |     |                   |
-|                  |                |            |                       |                 |     |                   |
+| 12345678         | 9              | CPU        | 3GHz CPU              | Some | Category | Foo | CPU Desc Etc      |
 
 Spinx then creates its own index based on this table and stores it away. The most important parts of this table are the three extra columns name, name_attributes, sku and category.
 
