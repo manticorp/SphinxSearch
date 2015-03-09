@@ -16,7 +16,7 @@
                     <show_in_default>1</show_in_default>
                     <show_in_website>1</show_in_website>
                     <show_in_store>1</show_in_store>
-                    <comment><![CDATA[<a href="https://github.com/fheyer/sphinxsearch/" target="_blank">SphinxSearch on GitHub</a> for bug reports etc.]]></comment>
+                    <comment><![CDATA[<a href="https://github.com/manticorp/SphinxSearch" target="_blank">Manticorp/SphinxSearch on GitHub</a> for bug reports etc.]]></comment>
                     <fields>
                         <frontend translate="label">
                             <label>Enable Search</label>
