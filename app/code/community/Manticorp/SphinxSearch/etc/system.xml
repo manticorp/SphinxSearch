@@ -1,0 +1,155 @@
+<?xml version="1.0"?>
+<config>
+    <sections>
+        <sphinxsearch translate="label" module="sphinxsearch">
+            <label>Sphinx Search Engine</label>
+            <tab>catalog</tab>
+            <sort_order>9000</sort_order>
+            <show_in_default>1</show_in_default>
+            <show_in_website>1</show_in_website>
+            <show_in_store>1</show_in_store>
+            <groups>
+                <active translate="label">
+                    <label>Activate SphinxSearch</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>1</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <comment><![CDATA[<a href="https://github.com/fheyer/sphinxsearch/" target="_blank">SphinxSearch on GitHub</a> for bug reports etc.]]></comment>
+                    <fields>
+                        <frontend translate="label">
+                            <label>Enable Search</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>1</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment><![CDATA[Use sphinx search in frontend]]></comment>
+                        </frontend>
+                        <indexer translate="label">
+                            <label>Enable Index</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>2</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment><![CDATA[Index when "Catalog Search" is reindexed]]></comment>
+                        </indexer>
+                    </fields>
+                </active>
+                <search translate="label">
+                    <label>Search Settings</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>2</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <sphinxpath translate="label">
+                            <label>Path to sphinx</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment><![CDATA[The path to sphinx searchd and indexer files]]></comment>
+                        </sphinxpath>
+                        <exclude translate="label">
+                            <label>Exclude fields</label>
+                            <frontend_type>multiselect</frontend_type>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <source_model>sphinxsearch/system_config_source_product_attributes_search</source_model>
+                            <comment><![CDATA[Attributes to exclude from the concatenated search field.]]></comment>
+                        </exclude>
+                        <nameweight translate="label">
+                            <label>Name Weight</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>30</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <validate>validate-number</validate>
+                        </nameweight>
+                        <skuweight translate="label">
+                            <label>Sku Weight</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>35</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <validate>validate-number</validate>
+                        </skuweight>
+                        <nameattsweight translate="label">
+                            <label>Attributes Weight</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>40</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <validate>validate-number</validate>
+                        </nameattsweight>
+                        <catweight translate="label">
+                            <label>Category Weight</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>50</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <validate>validate-number</validate>
+                        </catweight>
+                        <defaultweight translate="label">
+                            <label>Magento Default Weight</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>60</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <validate>validate-number</validate>
+                        </defaultweight>
+                    </fields>
+                </search>
+                <server translate="label">
+                    <label>Server Configuration</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>3</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <host translate="label">
+                            <label>Host</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>1</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </host>
+                        <port translate="label">
+                            <label>Port</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>2</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </port>
+                        <index translate="label">
+                            <label>Index</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>3</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment><![CDATA[Empty by default! If empty all indices on server are queried. You can select a certain index on the server by inserting its name in this field.]]></comment>
+                        </index>
+                    </fields>
+                </server>
+            </groups>
+        </sphinxsearch>
+    </sections>
+</config>
