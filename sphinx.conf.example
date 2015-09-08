@@ -32,7 +32,7 @@ source magento_fulltext
 
 	# main document fetch query
 	# mandatory, integer document ID field MUST be the first selected column
-	sql_query      = SELECT product_id, name, name_attributes, category, data_index, sku FROM i8ob_sphinx_catalogsearch_fulltext
+	sql_query      = SELECT product_id, name, name_attributes, category, data_index, sku FROM sphinx_catalogsearch_fulltext
 }
 
 #############################################################################
