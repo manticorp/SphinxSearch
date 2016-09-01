@@ -72,6 +72,12 @@ class Manticorp_SphinxSearch_Model_Resource_Fulltext extends Mage_CatalogSearch_
     public function rebuildIndex($storeId = null, $productIds = null)
     {
 
+	// this block added here by Tristan3dtotal, from https://github.com/manticorp/SphinxSearch/issues/3
+        if ($storeId == null) {
+            $this->rebuildAllIndexes();
+            return $this;
+	}
+
         // Use the parent rebuild method
         parent::rebuildIndex($storeId, $productIds);
 
