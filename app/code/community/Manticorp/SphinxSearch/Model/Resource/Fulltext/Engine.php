@@ -63,8 +63,8 @@ class Manticorp_SphinxSearch_Model_Resource_Fulltext_Engine extends Mage_Catalog
         $tempTable  = $this->getTempTable();
 
         $adapter->dropTable($prevTable);
-        $adapter->query("RENAME TABLE `{$mainTable}` TO `{$prevTable}`,`{$tempTable}` TO `{$mainTable}`");
-        $adapter->query("DROP TABLE IF EXISTS `{$prevTable}`");
+       $adapter->renameTablesBatch(array(array('oldName' => $mainTable, 'newName' => $prevTable), array('oldName' => $tempTable, 'newName' => $mainTable)));   // Tristan3dtotal
+       $adapter->dropTable($prevTable);        // Tristan3dtotal
     }
 
 
@@ -73,8 +73,10 @@ class Manticorp_SphinxSearch_Model_Resource_Fulltext_Engine extends Mage_Catalog
         if(is_null($this->_tmpTable)) {
             $mainTable = $this->getMainTable();
             $this->_tmpTable = $mainTable.'_tmp';
-            $this->_getWriteAdapter()->dropTable($this->_tmpTable);
-            $this->_getWriteAdapter()->query("CREATE TABLE `{$this->_tmpTable}` LIKE  `{$mainTable}`");
+           if ($this->isTableExists($this->_tmpTable)) {       // Tristan3dtotal
+               $this->_getWriteAdapter()->dropTable($this->_tmpTable);
+           }   // Tristan3dtotal
+           $this->_getWriteAdapter()->createTableByDdl($mainTable, $this->_tmpTable); // Tristan3dtotal
         }
         return $this->_tmpTable;
     }
