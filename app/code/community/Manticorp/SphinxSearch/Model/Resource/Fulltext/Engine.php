@@ -73,9 +73,9 @@ class Manticorp_SphinxSearch_Model_Resource_Fulltext_Engine extends Mage_Catalog
         if(is_null($this->_tmpTable)) {
             $mainTable = $this->getMainTable();
             $this->_tmpTable = $mainTable.'_tmp';
-           if ($this->isTableExists($this->_tmpTable)) {       // Tristan3dtotal
-               $this->_getWriteAdapter()->dropTable($this->_tmpTable);
-           }   // Tristan3dtotal
+           //if ($this->_getWriteAdapter()->isTableExists($this->_tmpTable)) {       // Tristan3dtotal
+               //$this->_getWriteAdapter()->dropTable($this->_tmpTable);
+           //}   // Tristan3dtotal
            $this->_getWriteAdapter()->createTableByDdl($mainTable, $this->_tmpTable); // Tristan3dtotal
         }
         return $this->_tmpTable;
