@@ -26,6 +26,7 @@ class Manticorp_SphinxSearch_Model_Resource_Fulltext_Engine extends Mage_Catalog
             $data   = array();
             $storeId = (int)$storeId;
             foreach ($entityIndexes as $entityId => &$index) {
+		    //Mage::log(get_class($this) . ": saveEntityIndexes for {$entity} {$entityId}...");
                     $data[] = array(
                             'product_id'      => (int)$entityId,
                             'store_id'        => $storeId,
@@ -63,20 +64,22 @@ class Manticorp_SphinxSearch_Model_Resource_Fulltext_Engine extends Mage_Catalog
         $tempTable  = $this->getTempTable();
 
         $adapter->dropTable($prevTable);
-       $adapter->renameTablesBatch(array(array('oldName' => $mainTable, 'newName' => $prevTable), array('oldName' => $tempTable, 'newName' => $mainTable)));   // Tristan3dtotal
-       $adapter->dropTable($prevTable);        // Tristan3dtotal
+        $adapter->renameTablesBatch(array(array('oldName' => $mainTable, 'newName' => $prevTable), array('oldName' => $tempTable, 'newName' => $mainTable)));   // Tristan3dtotal
+	//$adapter->renameTable($mainTable, $prevTable);
+        $adapter->dropTable($prevTable);        // Tristan3dtotal
     }
 
 
 
     public function getTempTable() {
         if(is_null($this->_tmpTable)) {
+	    $adapter = $this->_getWriteAdapter();
             $mainTable = $this->getMainTable();
             $this->_tmpTable = $mainTable.'_tmp';
-           //if ($this->_getWriteAdapter()->isTableExists($this->_tmpTable)) {       // Tristan3dtotal
-               //$this->_getWriteAdapter()->dropTable($this->_tmpTable);
-           //}   // Tristan3dtotal
-           $this->_getWriteAdapter()->createTableByDdl($mainTable, $this->_tmpTable); // Tristan3dtotal
+            if ($adapter->isTableExists($this->_tmpTable)) {       // Tristan3dtotal
+                $adapter->dropTable($this->_tmpTable);
+            }   // Tristan3dtotal
+	    $adapter->createTable($adapter->createTableByDdl($mainTable, $this->_tmpTable));	// Tristan3dtotal
         }
         return $this->_tmpTable;
     }
